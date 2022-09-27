@@ -18,23 +18,24 @@ public class CreateTest {
 
     @Test(priority = 1)
     public void createNewPateAndVerificationNameOfPaste() {
+        driver.manage().window().maximize();
         newPastebinPage = new CreatePastebinPage(driver)
                 .openPage()
                 .inputCodeInTextField(textOfPaste)
                 .selectSyntaxHighlightingFieldAndSelectBash()
                 .selectPasteExpirationFieldAndSelect10min()
                 .inputPasteNameAndCreateThePaste(nameOfPaste);
-        Assert.assertEquals(newPastebinPage.getNameOfPasteText(),nameOfPaste,"Name of paste is ok");
+        Assert.assertEquals(newPastebinPage.getNameOfPasteText(),nameOfPaste);
     }
 
     @Test(priority = 2)
     public void verificationSyntax(){
-        Assert.assertEquals(newPastebinPage.getSyntaxText(),syntax,"syntax is ok");
+        Assert.assertEquals(newPastebinPage.getSyntaxText(),syntax);
     }
 
     @Test(priority = 3)
     public void verificationCodeText(){
-        Assert.assertEquals(newPastebinPage.getNewPasteText(),textOfPaste, "text of paste is ok");
+        Assert.assertEquals(newPastebinPage.getNewPasteText(),textOfPaste);
         driver.quit();
         driver = null;
     }

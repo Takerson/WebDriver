@@ -17,10 +17,13 @@ public class CreatePaste {
 
         WebElement textInputField = driver.findElement(By.xpath("//*[@id='postform-text']"));
         textInputField.sendKeys("Hello from WebDriver");
-        Thread.sleep(2000);
 
-        WebElement pasteExpiration = driver.findElement(By.id("select2-postform-expiration-container"));
+
+        WebElement pasteExpiration = driver.findElement(By.xpath("//*[@aria-labelledby = 'select2-postform-expiration-container']"));
+        new WebDriverWait(driver,10)
+                .until(ExpectedConditions.elementToBeClickable(pasteExpiration));
         pasteExpiration.click();
+
 
         WebElement select10minInPasteExpiration = driver.findElement(By.xpath("//*[contains(@class, 'select2-results__options')]/li[contains(text(), '10 Minutes')]"));
         select10minInPasteExpiration.click();

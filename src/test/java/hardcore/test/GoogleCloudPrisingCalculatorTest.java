@@ -7,13 +7,14 @@ import hardcore.page.GoogleHomePage;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.Assert;
+import org.testng.annotations.AfterTest;
 import org.testng.annotations.Test;
 
 public class GoogleCloudPrisingCalculatorTest {
     private WebDriver driver = new ChromeDriver();
     EmailBox emailBox;
     private String searchText = "Google Cloud Platform Pricing Calculator";
-    private String numberOfInstance = "4 x";
+    private String numberOfInstance = "4";
 
     @Test(priority = 1)
     public void createNewEstimateAnd() {
@@ -41,6 +42,10 @@ public class GoogleCloudPrisingCalculatorTest {
                 .switchToEmailTab()
                 .checkEmailBox();
         Assert.assertEquals(emailBox.getEstimatedCostPerMonthFromEmailBox(), CreatedEstimate.priceInCalculator);
+    }
+
+    @AfterTest
+    public void closeDriver(){
         driver.quit();
         driver = null;
     }

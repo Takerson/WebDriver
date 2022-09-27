@@ -16,7 +16,7 @@ public class NewPastebinPage {
     @FindBy(xpath="//*[@href='/archive/bash']")
     private WebElement syntaxText;
 
-    @FindBy(xpath = "//textarea[contains(@class,'js-paste-raw')]")
+    @FindBy(xpath = "//ol[@class = 'bash'] ")
     private  WebElement newPasteText;
 
     public NewPastebinPage(WebDriver driver) {
